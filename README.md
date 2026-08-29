@@ -8,11 +8,37 @@ A property feed built for the Expert Listing assessment. It has a Flutter mobile
 
 <br>
 
+The API is live at **https://expertlisting-api.onrender.com**, running on Render against a Supabase Postgres instance. It is seeded with the feed from the design, so these work in a browser or from a terminal right now:
+
+<br>
+
+```bash
+curl https://expertlisting-api.onrender.com/posts?limit=3
+curl https://expertlisting-api.onrender.com/posts?category=PROPERTY
+curl -X POST https://expertlisting-api.onrender.com/posts/<id>/like
+```
+
+<br>
+
+It is on Render's free tier, so it sleeps after inactivity and the first request can take up to a minute to wake. Every request after that is fast.
+
+<br>
+
 [Download the Android APK](https://github.com/davidcreated/expertlisting/releases/latest)
 
 <br>
 
-It installs and runs standalone. The feed, likes, comments, filters and creating a post all work against an in memory repository, so nothing needs to be hosted to try it. Exercising the API path needs the repo and a Postgres instance, which is covered below.
+The APK installs and runs standalone against the in memory repository, deliberately rather than against the hosted API. Free tier cold starts can exceed the client's connect timeout, and an app that shows an error on first open because a server was asleep misrepresents the work. The build always shows the full feed, likes, comments, filters and post creation.
+
+<br>
+
+To watch the client drive the hosted API instead, run it from the repo:
+
+<br>
+
+```bash
+flutter run --dart-define=USE_FAKE_DATA=false --dart-define=API_BASE_URL=https://expertlisting-api.onrender.com
+```
 
 <br>
 
@@ -121,7 +147,7 @@ The API tests run against PGlite, which is real Postgres compiled to WebAssembly
 
 <br>
 
-Every response is camelCase JSON. Paginated endpoints return the same envelope: a `data` array, a `nextCursor` string that is null on the last page, and a `hasMore` boolean.
+Base URL for the hosted instance is `https://expertlisting-api.onrender.com`. Every response is camelCase JSON. Paginated endpoints return the same envelope: a `data` array, a `nextCursor` string that is null on the last page, and a `hasMore` boolean.
 
 <br>
 
@@ -342,7 +368,11 @@ Search, notifications and the profile tab are not built. Their tabs are in the b
 
 <br>
 
-The API has no rate limiting, no request logging beyond errors, and permissive CORS. All three are deliberate for a local assessment and all three would need attention before this was exposed publicly.
+The API has no rate limiting, no request logging beyond errors, and permissive CORS. Since authentication is out of scope, the hosted instance is publicly writable: anyone with the URL can like a post or leave a comment. That is fine for an assessment and would not be acceptable beyond one.
+
+<br>
+
+The health check only reports that the process is running, not that the database is reachable. That is why a deploy with a bad connection string reported success and failed on the first real request instead. Making it query the database would catch that at deploy time, at the cost of a database blip taking the whole service down rather than degrading it.
 
 <br>
 
