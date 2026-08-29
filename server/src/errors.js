@@ -12,8 +12,9 @@ export const badRequest = (message) =>
 export const notFound = (message) => new HttpError(404, 'NOT_FOUND', message);
 
 export function errorHandler(error, req, res, _next) {
-  const status = error.status ?? 500;
-  const code = error.code ?? 'INTERNAL_ERROR';
+  const expected = error instanceof HttpError;
+  const status = expected ? error.status : 500;
+  const code = expected ? error.code : 'INTERNAL_ERROR';
 
   if (status >= 500) {
     console.error(`${req.method} ${req.originalUrl} failed`, error);
