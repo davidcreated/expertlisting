@@ -1,0 +1,8 @@
+Open Runde v1.0.1
+https://github.com/lauridskern/open-runde
+
+A soft, rounded variant of Inter by Rasmus Andersson.
+Licensed under the SIL Open Font License, Version 1.1.
+https://openfontlicense.org
+
+Bundled weights: Regular (400), Medium (500), Semibold (600), Bold (700).
