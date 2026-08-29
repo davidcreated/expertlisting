@@ -88,6 +88,10 @@ The client starts against an in memory repository so it runs with no backend at 
 
 <br>
 
+This path is verified rather than assumed. The client has been run against a live Supabase instance, fetching the feed and paginating with real keyset cursors. The screenshot in the Screens section below shows the app rendering a comment that was written straight into Postgres, which is content the in memory repository has no copy of.
+
+<br>
+
 ```bash
 flutter run --dart-define=USE_FAKE_DATA=false --dart-define=API_BASE_URL=http://localhost:3000
 ```
@@ -374,6 +378,16 @@ The feed, the create post screen and the filters sheet.
   <img src="docs/screenshots/01_feed.png" width="270" alt="Feed">
   <img src="docs/screenshots/02_create_post.png" width="270" alt="Create post">
   <img src="docs/screenshots/03_filters.png" width="270" alt="Filters">
+</p>
+
+<br>
+
+Below is the client running against the live Supabase backed API rather than the in memory repository. The comment reading "Verified end to end against Supabase" was inserted directly into Postgres, so its presence on screen is proof the feed is served by the database and not by local data.
+
+<br>
+
+<p>
+  <img src="docs/screenshots/04_live_api.png" width="270" alt="The client rendering data served from Supabase">
 </p>
 
 <br>

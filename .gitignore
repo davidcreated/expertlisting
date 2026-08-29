@@ -48,3 +48,7 @@ app.*.map.json
 CLAUDE.md
 tasks/
 tool/probe/.out/
+
+# Supabase CLI local state
+supabase/.temp/
+supabase/.branches/
