@@ -350,8 +350,32 @@ Two real bugs were caught this way. The liked by avatars came back in arbitrary 
 
 <br>
 
-## Screenshots
+## Screens
 
 <br>
 
-See `docs/screenshots`.
+The feed, the create post screen and the filters sheet.
+
+<br>
+
+<p>
+  <img src="docs/screenshots/01_feed.png" width="270" alt="Feed">
+  <img src="docs/screenshots/02_create_post.png" width="270" alt="Create post">
+  <img src="docs/screenshots/03_filters.png" width="270" alt="Filters">
+</p>
+
+<br>
+
+## Recording
+
+<br>
+
+Liking a post, opening the comments sheet and adding a comment, applying a filter, and moving through the bottom navigation.
+
+<br>
+
+<img src="docs/demo.gif" width="300" alt="Walkthrough of the feed interactions">
+
+<br>
+
+The full quality recording is at `docs/screen_recording.mov`.
