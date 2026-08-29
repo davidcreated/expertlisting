@@ -4,6 +4,18 @@ A property feed built for the Expert Listing assessment. It has a Flutter mobile
 
 <br>
 
+## Try it without building anything
+
+<br>
+
+[Download the Android APK](https://github.com/davidcreated/expertlisting/releases/latest)
+
+<br>
+
+It installs and runs standalone. The feed, likes, comments, filters and creating a post all work against an in memory repository, so nothing needs to be hosted to try it. Exercising the API path needs the repo and a Postgres instance, which is covered below.
+
+<br>
+
 ## What is in the repository
 
 <br>
