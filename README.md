@@ -8,7 +8,7 @@ A property feed built for the Expert Listing assessment. It has a Flutter mobile
 
 <br>
 
-The API is live at **https://expertlisting-api.onrender.com**, running on Render against a Supabase Postgres instance. It is seeded with the feed from the design, so these work in a browser or from a terminal right now:
+The API is live at https://expertlisting-api.onrender.com and runs on Render against a Supabase Postgres instance. It is seeded with the feed from the design, so these work in a browser or from a terminal right now:
 
 <br>
 
@@ -114,10 +114,6 @@ The client starts against an in memory repository so it runs with no backend at 
 
 <br>
 
-This path is verified rather than assumed. The client has been run against a live Supabase instance, fetching the feed and paginating with real keyset cursors. The screenshot in the Screens section below shows the app rendering a comment that was written straight into Postgres, which is content the in memory repository has no copy of.
-
-<br>
-
 ```bash
 flutter run --dart-define=USE_FAKE_DATA=false --dart-define=API_BASE_URL=http://localhost:3000
 ```
@@ -125,6 +121,10 @@ flutter run --dart-define=USE_FAKE_DATA=false --dart-define=API_BASE_URL=http://
 <br>
 
 On an Android emulator use `http://10.0.2.2:3000` for the base URL.
+
+<br>
+
+This path is verified rather than assumed. The client has been run against the live Supabase instance, fetching the feed, paginating with real keyset cursors and posting likes. The screenshot in the Screens section shows the app rendering a comment that was written straight into Postgres, which is content the in memory repository has no copy of.
 
 <br>
 
